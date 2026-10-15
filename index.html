@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Vikas Raj &amp; Kumari Sandhya | Wedding Invitation</title>
-<meta name="description" content="You are warmly invited to the wedding of Vikas Raj and Kumari Sandhya, 20 November 2026, Parvati Farm House, Atrauli, Aligarh.">
+<meta name="description" content="You are warmly invited to the wedding of Vikas Raj and Kumari Sandhya, Parvati Farm House, Atrauli, Aligarh.">
 <meta name="theme-color" content="#f5ecdd">
 <meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,6 +32,19 @@
       <use href="#flower" x="110" y="18" width="58" height="58" style="color:#f7cfae"/>
       <use href="#flower" x="16" y="116" width="58" height="58" style="color:#f6dca0"/>
       <use href="#flower" x="86" y="70" width="40" height="40" style="color:#f9e3e0"/>
+    </symbol>
+    <symbol id="sprig" viewBox="0 0 160 64">
+      <path d="M4 32C50 36 100 28 156 32" stroke="#8fa787" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+      <use href="#leaf" x="12" y="4" width="14" height="28" transform="rotate(50 19 32)" style="color:#9caf94"/>
+      <use href="#leaf" x="12" y="4" width="14" height="28" transform="rotate(130 19 32)" style="color:#b3c3ab"/>
+      <use href="#leaf" x="42" y="4" width="15" height="30" transform="rotate(50 49 32)" style="color:#b3c3ab"/>
+      <use href="#leaf" x="42" y="4" width="15" height="30" transform="rotate(130 49 32)" style="color:#8fa787"/>
+      <use href="#leaf" x="74" y="4" width="16" height="32" transform="rotate(50 82 32)" style="color:#8fa787"/>
+      <use href="#leaf" x="74" y="4" width="16" height="32" transform="rotate(130 82 32)" style="color:#9caf94"/>
+      <use href="#leaf" x="106" y="4" width="15" height="30" transform="rotate(50 113 32)" style="color:#9caf94"/>
+      <use href="#leaf" x="106" y="4" width="15" height="30" transform="rotate(130 113 32)" style="color:#b3c3ab"/>
+      <use href="#leaf" x="141" y="6" width="14" height="28" transform="rotate(90 148 32)" style="color:#8fa787"/>
+      <circle cx="30" cy="31" r="3" fill="#f3c9c6"/><circle cx="96" cy="31" r="3.4" fill="#f6dca0"/><circle cx="128" cy="32" r="2.6" fill="#f7cfae"/>
     </symbol>
     <symbol id="lotus" viewBox="0 0 64 40"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M32 36C24 30 22 18 32 4c10 14 8 26 0 32z"/><path d="M30 36C18 34 8 26 6 14c12 2 20 10 24 22z"/><path d="M34 36c12-2 22-10 24-22-12 2-20 10-24 22z"/><path d="M4 38h56"/></g></symbol>
     <symbol id="mandala" viewBox="-100 -100 200 200">
@@ -62,13 +75,14 @@
     <p class="guest" id="guest" hidden></p>
     <p class="cnames"><span class="gold">Km. Sandhya</span><i>&amp;</i><span class="gold">Vikas Raj</span></p>
     <div class="divider"><svg><use href="#flower"/></svg></div>
-    <p class="cdate">Friday, 20 November 2026</p>
+    <p class="cdate">A Celebration of Love</p>
     <button class="btn pulse" id="openBtn" type="button">Open Invitation</button>
     <p class="tap">Tap to unfold the celebration</p>
   </div>
 </div>
 <div class="burst" id="burst" aria-hidden="true"></div>
 <div class="petals" id="petals" aria-hidden="true"></div>
+<div class="leaves" id="leaves" aria-hidden="true"></div>
 
 <main>
 <!-- HERO -->
@@ -87,10 +101,23 @@
     </h1>
     <div class="divider rise" style="--d:1.4s"><svg><use href="#flower"/></svg></div>
     <p class="invite rise" style="--d:1.6s">Invite you to celebrate their wedding</p>
-    <p class="date rise" style="--d:1.8s">20 November 2026</p>
-    <p class="quote rise" style="--d:2s">“In you, I have found my forever.”</p>
-    <div class="hero-acts rise" style="--d:2.2s">
-      <button class="btn ghost" id="calBtn" type="button">Save the Date</button>
+
+    <!-- Scratch card: the wedding date is hidden underneath -->
+    <div class="scratch rise" id="scratch" style="--d:1.8s">
+      <div class="sdate" aria-live="polite">
+        <span class="sday" id="sDay"></span>
+        <span class="sfull" id="sFull"></span>
+      </div>
+      <canvas id="scratchCv" tabindex="0" role="button" aria-label="Scratch card. Scratch, or press Enter, to reveal the wedding date"></canvas>
+      <div class="sburst" id="sburst" aria-hidden="true"></div>
+      <svg class="sprig a" aria-hidden="true"><use href="#sprig"/></svg>
+      <svg class="sprig b" aria-hidden="true"><use href="#sprig"/></svg>
+    </div>
+    <p class="shint rise" id="shint" style="--d:2s">✦ Scratch the golden card to reveal the date ✦</p>
+
+    <p class="quote rise" style="--d:2.2s">“In you, I have found my forever.”</p>
+    <div class="hero-acts rise" style="--d:2.4s">
+      <a class="btn ghost" id="saveBtn" href="assets/Vikas_Raj_Sandhya_Wedding_Invitation_Cards.pdf" download="Vikas_Raj_Sandhya_Wedding_Invitation_Cards.pdf">Save Card</a>
     </div>
   </div>
   <a href="#story" class="scroll" aria-label="Scroll down"><span></span></a>
@@ -125,7 +152,7 @@
   <div class="wrap reveal">
     <p class="kicker">Counting the moments</p>
     <h2>Until We Say “I Do”</h2>
-    <div class="clock" id="clock" role="timer" aria-live="off">
+    <div class="clock sd" id="clock" role="timer" aria-live="off">
       <div><b id="cd-d">00</b><span>Days</span></div><i></i>
       <div><b id="cd-h">00</b><span>Hours</span></div><i></i>
       <div><b id="cd-m">00</b><span>Minutes</span></div><i></i>
@@ -148,11 +175,25 @@
       <article class="fam reveal" style="--rd:.25s">
         <span class="mono" aria-hidden="true">V</span><h3>Groom's Family</h3>
         <p class="fam-name">Vikas Raj</p>
-        <p>Son of Shri Kamal Singh</p>
+        <p>Son of Shri Kamal Singh &amp; Smt. Kashmiri Devi</p>
         <p class="faddr">Village Chapota, Post Ganiyawali,<br>Atrauli, Aligarh, Uttar Pradesh</p>
       </article>
     </div>
     <p class="hosts reveal">Inviting you with love<br>Shri Gendalal Singh &amp; Smt. Rajeshwari Devi</p>
+  </div>
+</section>
+
+<!-- BAL AAKANSHA -->
+<section class="section kids" id="kids">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="kicker">Little Voices</p>
+      <h2>Bal Aakansha</h2>
+      <p class="deva kdeva" lang="hi">बाल आकांक्षा</p>
+      <div class="divider"><svg><use href="#flower"/></svg></div>
+      <p class="ksub">Our little ones have a special message for you</p>
+    </div>
+    <div class="kid-grid" id="kids-grid"></div>
   </div>
 </section>
 
@@ -164,7 +205,7 @@
       <h2>Parvati Farm House</h2>
       <div class="divider left"><svg><use href="#flower"/></svg></div>
       <p class="addr">Pyaau, Atrauli, Aligarh (UP)</p>
-      <p>Join us for the Barat and Wedding Reception on Friday, 20 November 2026, from 7:00 PM onwards.</p>
+      <p>Join us for the Barat and Wedding Reception on <span class="sd">Friday, 20 November 2026</span>, from 7:00 PM onwards.</p>
       <div class="acts">
         <a class="btn" href="tel:+917017292480">Call for Details</a>
         <a class="btn ghost" id="dirBtn" target="_blank" rel="noopener">Get Directions</a>
@@ -178,14 +219,14 @@
 <footer class="footer">
   <svg class="fl-s"><use href="#flower"/></svg>
   <p class="with">With love, Km. Sandhya &amp; Vikas Raj</p>
-  <p class="fdate">20 November 2026</p>
+  <p class="fdate sd">20 November 2026</p>
   <p class="see">We can't wait to celebrate with you</p>
 </footer>
 
 <button class="music" id="music" type="button" aria-label="Play wedding song" aria-pressed="false" hidden>
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6.5" cy="18" r="2.5" fill="currentColor"/><circle cx="17.5" cy="16" r="2.5" fill="currentColor"/></svg>
 </button>
-<audio id="song" loop preload="none"></audio>
+<audio id="song" loop preload="auto"></audio>
 
 <script src="script.js"></script>
 </body>
