@@ -14,7 +14,7 @@ const CONFIG = {
       desc: "A golden morning of turmeric, laughter and blessings as family anoints the couple." },
     { key: "mehendi", title: "Mehendi", date: "19 November", day: "Thursday", time: "5:00 PM",
       desc: "An evening of intricate henna, music and dance to bring good fortune to the bride." },
-    { key: "barat", title: "Barat & Reception", date: "20 November", day: "Friday", time: "7:00 PM onwards",
+    { key: "barat", title: "Barat ", date: "20 November", day: "Friday", time: "7:00 PM onwards",
       desc: "The grand wedding procession followed by the reception, dinner and blessings." }
   ],
   /* Bal Aakansha: change the slogans here anytime */
